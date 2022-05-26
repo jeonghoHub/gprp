@@ -1,8 +1,9 @@
-package kr.co.gprp.domain.user.entity;
+package domain.user.entity;
 
 import static java.time.LocalDateTime.now;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import kr.co.gprp.domain.user.entity.Seller;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

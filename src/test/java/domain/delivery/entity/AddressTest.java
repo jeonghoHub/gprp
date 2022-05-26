@@ -1,8 +1,9 @@
-package kr.co.gprp.domain.delivery.entity;
+package domain.delivery.entity;
 
 import static java.time.LocalDateTime.now;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import kr.co.gprp.domain.delivery.entity.Address;
 import kr.co.gprp.domain.user.entity.Seller;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -113,21 +114,21 @@ public class AddressTest {
         ).isInstanceOf(IllegalArgumentException.class)
             .hasMessage("주소 이름 길이가 맞지 않습니다.");
     }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1234512345_1234512345_123451 ","가나다라마바사_가나다라마바사_가나다라마바사"})
-    void 요청사항_길이가_벗어나_예외가_발생합니다(String arg) {
-        assertThatThrownBy(() ->
-            Address.builder()
-                .zipCode(SUCCESS_USERPOSTALCODE_NEW)
-                .roadName(SUCCESS_ROADNAME)
-                .requirement(arg)
-                .name(SUCCESS_NAME)
-                .detailed(SUCCESS_DETAILED)
-                .build()
-        ).isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("요청사항은 " + Address.AddressValidator.REQUIREMENT_MAX_LEN + "자를 넘을수 없습니다.");
-    }
+//
+//    @ParameterizedTest
+//    @ValueSource(strings = {"1234512345_1234512345_123451 ","가나다라마바사_가나다라마바사_가나다라마바사"})
+//    void 요청사항_길이가_벗어나_예외가_발생합니다(String arg) {
+//        assertThatThrownBy(() ->
+//            Address.builder()
+//                .zipCode(SUCCESS_USERPOSTALCODE_NEW)
+//                .roadName(SUCCESS_ROADNAME)
+//                .requirement(arg)
+//                .name(SUCCESS_NAME)
+//                .detailed(SUCCESS_DETAILED)
+//                .build()
+//        ).isInstanceOf(IllegalArgumentException.class)
+//            .hasMessage("요청사항은 " + Address.AddressValidator.REQUIREMENT_MAX_LEN + "자를 넘을수 없습니다.");
+//    }
 
     @ParameterizedTest
     @ValueSource(strings = {"1234512345_1234512345_1234512345_1234512345_1234512345_ "})
